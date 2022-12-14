@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BestBy.UpdateItem">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Save" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="Cancel" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            <Style x:Key="Delete" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="Red"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10,40,10,0">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Product Name:"/>
+                <Entry x:Name="productName" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Product Category:"/>
+                <Picker x:Name="productType">
+                    <Picker.Items>
+                        <x:String>Electronics</x:String>
+                        <x:String>Grocery</x:String>
+                        <x:String>Healthcare</x:String>
+                        <x:String>House</x:String>
+                        <x:String>Personal Care</x:String>
+                        <x:String>Subscriptions</x:String>
+                        <x:String>Other</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Expiration Date:"/>
+                <DatePicker x:Name="expirationDate" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Button Text="Save" Clicked="UpdateClicked" Style="{StaticResource Save}"/>
+                <Button Text="Delete" Clicked="DeleteClicked" Style="{StaticResource Delete}"/>
+            </StackLayout>
+            <Button Text="Cancel" Clicked="CancelClicked" Style="{StaticResource Cancel}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

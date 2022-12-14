@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BestBy.Expiring">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Proxima"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView SelectionMode="Single" SelectionChanged="cv_SelectionChanged" 
+                x:Name="cv" IsGrouped="True" >
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Margin="0">
+                            <Label Text="{Binding Name}"
+                               FontSize="Medium" VerticalOptions="Center"  Padding="5,7,0,0"
+                               FontAttributes="Bold" HeightRequest="40" WidthRequest="400"/>
+                            <Label Text="{Binding Count}"
+                               VerticalOptions="CenterAndExpand"
+                               FontSize="Small" HorizontalOptions="End" Padding="5,10,0,0"
+                                   WidthRequest="20" HeightRequest="40"/>
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Padding="10,0" Margin="12" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}"
+                                   Grid.Row="0" FontAttributes="Bold" 
+                                   BackgroundColor="{Binding LabelColor}"
+                                   TextColor="White" Padding="5"
+                                   VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+
+                            <StackLayout Grid.Row="1">
+
+                                <Label Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       Text="{Binding ExpirationLabel}"
+                                       FontAttributes="Bold" />
+                            </StackLayout>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

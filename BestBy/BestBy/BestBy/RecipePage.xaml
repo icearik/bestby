@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BestBy.RecipePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Proxima"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="LineHeight" Value="1.25"/>
+            </Style>
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="DarkOrange"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Padding" Value="3,1"/>
+                <Setter Property="WidthRequest" Value="25"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView x:Name="sv" VerticalScrollBarVisibility="Never" Margin="20" IsVisible="False">
+            <StackLayout>
+                <Image x:Name="img" HorizontalOptions="FillAndExpand"
+                             Aspect="AspectFill"/>
+                <Label x:Name="title" Grid.Row="0" Grid.Column="0" Padding="10" 
+                           BackgroundColor="DarkOrange" FontSize="16"
+                           TextColor="White" TextTransform="Uppercase" FontAttributes="Bold"/>
+
+                <StackLayout Margin="8">
+                    <Label x:Name="summary" TextType="Html"/>
+                    <StackLayout Orientation="Horizontal" Padding="0,10" Spacing="70" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Label Text="Servings:" FontAttributes="Bold" TextTransform="Uppercase" />
+                            <Label x:Name="servings"  HorizontalOptions="Center" FontSize="12" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Total Time:" FontAttributes="Bold" TextTransform="Uppercase" />
+                            <Label x:Name="time" HorizontalOptions="Center" FontSize="12"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="Content">
+                    <Label Text="Ingredients" Style="{StaticResource Title}"/>
+                    <StackLayout x:Name="ingredients"/>
+                    <Label Text="Steps" Style="{StaticResource Title}"/>
+                    <StackLayout x:Name="steps"/>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Padding="0,10">
+                        <Label Text="Credits:" FontAttributes="Bold" TextTransform="Uppercase"/>
+                        <Label x:Name="credits" TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
